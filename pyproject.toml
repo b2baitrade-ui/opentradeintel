@@ -43,7 +43,7 @@ dev = [
   "pre-commit>=4.2,<5",
   "pytest>=8.4,<10",
   "ruff>=0.12,<1",
-  "twine>=6.2,<7",
+  "twine>=6.2,<8",
 ]
 
 [tool.hatch.build.targets.wheel]
