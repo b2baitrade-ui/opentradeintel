@@ -138,3 +138,15 @@ def test_score_is_repeatable_for_identical_inputs() -> None:
     second = score_product(tender(), product())
 
     assert first == second
+
+
+def test_exact_cpv_overlap_is_explained_without_changing_score() -> None:
+    without_cpv = score_product(tender(), product())
+    with_cpv = score_product(
+        tender(cpv_codes=["15897200"]),
+        product(cpv_codes=["15897200"]),
+    )
+
+    assert with_cpv.score == without_cpv.score == 100
+    assert with_cpv.breakdown == without_cpv.breakdown
+    assert "CPV overlap: 15897200 (tie-break signal; no score impact)" in with_cpv.reasons

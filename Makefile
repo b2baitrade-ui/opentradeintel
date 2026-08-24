@@ -1,4 +1,4 @@
-.PHONY: install lint format format-check typecheck test check run
+.PHONY: install lint format format-check typecheck test benchmark check run
 
 install:
 	uv sync --all-groups --locked
@@ -14,12 +14,15 @@ format-check:
 	uv run ruff format --check .
 
 typecheck:
-	uv run mypy src tests
+	uv run mypy src tests benchmarks examples
 
 test:
 	uv run pytest
 
-check: lint format-check typecheck test
+benchmark:
+	uv run python benchmarks/run.py
+
+check: lint format-check typecheck test benchmark
 
 run:
 	uv run uvicorn opentradeintel.api.app:app --host 0.0.0.0 --port 8000

@@ -1,0 +1,658 @@
+{
+  "products": [
+    {
+      "sku": "FOOD-MANGO-ORG",
+      "name": "Organic Dried Mango",
+      "description": "Synthetic unsweetened organic mango slices.",
+      "category": "Dried fruit",
+      "origin": "Exampleland",
+      "certifications": ["EU Organic", "HACCP"],
+      "min_order_quantity": 500,
+      "available_markets": ["EU"],
+      "keywords": ["organic", "dried", "mango", "fruit"],
+      "cpv_codes": ["15897200"]
+    },
+    {
+      "sku": "FOOD-MANGO-STD",
+      "name": "Dried Mango",
+      "description": "Synthetic conventional dried mango slices.",
+      "category": "Dried fruit",
+      "origin": "Sample Republic",
+      "certifications": ["HACCP"],
+      "min_order_quantity": 100,
+      "available_markets": ["Japan"],
+      "keywords": ["dried", "mango", "fruit"],
+      "cpv_codes": ["15897200"]
+    },
+    {
+      "sku": "FOOD-PINEAPPLE",
+      "name": "Dried Pineapple Rings",
+      "description": "Synthetic dried pineapple rings.",
+      "category": "Dried fruit",
+      "origin": "Exampleland",
+      "certifications": ["HACCP"],
+      "min_order_quantity": 200,
+      "available_markets": ["EU"],
+      "keywords": ["dried", "pineapple", "fruit"],
+      "cpv_codes": ["15897300"]
+    },
+    {
+      "sku": "FOOD-RAISINS",
+      "name": "Seedless Raisins",
+      "description": "Synthetic dried seedless grapes.",
+      "category": "Dried fruit",
+      "origin": "Fiction Isles",
+      "certifications": ["HACCP"],
+      "min_order_quantity": 300,
+      "available_markets": ["EU"],
+      "keywords": ["raisins", "dried", "fruit"],
+      "cpv_codes": ["15332410"]
+    },
+    {
+      "sku": "FOOD-MIX",
+      "name": "Organic Mixed Dried Fruit",
+      "description": "Synthetic mixed dried fruit assortment.",
+      "category": "Dried fruit",
+      "origin": "Exampleland",
+      "certifications": ["EU Organic", "HACCP"],
+      "min_order_quantity": 1000,
+      "available_markets": ["EU"],
+      "keywords": ["organic", "mixed", "dried", "fruit"],
+      "cpv_codes": ["15897100"]
+    },
+    {
+      "sku": "PUMP-SS",
+      "name": "Stainless Industrial Pump",
+      "description": "Synthetic stainless centrifugal process pump.",
+      "category": "Industrial pumps",
+      "origin": "Exampleland",
+      "certifications": ["ISO 9001"],
+      "min_order_quantity": 5,
+      "available_markets": ["EU"],
+      "keywords": ["stainless", "industrial", "pump", "centrifugal"],
+      "cpv_codes": ["42122430"]
+    },
+    {
+      "sku": "PUMP-FOOD",
+      "name": "Food Grade Process Pump",
+      "description": "Synthetic sanitary pump for food processing.",
+      "category": "Industrial pumps",
+      "origin": "Exampleland",
+      "certifications": ["ISO 9001", "Food Contact"],
+      "min_order_quantity": 2,
+      "available_markets": ["EU"],
+      "keywords": ["food", "grade", "process", "pump", "sanitary"],
+      "cpv_codes": ["42122430"]
+    },
+    {
+      "sku": "VALVE-SS",
+      "name": "Stainless Control Valve",
+      "description": "Synthetic stainless flow control valve.",
+      "category": "Industrial valves",
+      "origin": "Exampleland",
+      "certifications": ["ISO 9001"],
+      "min_order_quantity": 10,
+      "available_markets": ["EU"],
+      "keywords": ["stainless", "control", "valve", "flow"],
+      "cpv_codes": ["42131140"]
+    },
+    {
+      "sku": "ENERGY-SOLAR",
+      "name": "Photovoltaic Solar Panel",
+      "description": "Synthetic photovoltaic module.",
+      "category": "Solar equipment",
+      "origin": "Exampleland",
+      "certifications": ["IEC 61215"],
+      "min_order_quantity": 100,
+      "available_markets": ["EU"],
+      "keywords": ["photovoltaic", "solar", "panel", "module"],
+      "cpv_codes": ["09331200"]
+    },
+    {
+      "sku": "ENERGY-WIND",
+      "name": "Wind Turbine Generator",
+      "description": "Synthetic utility wind generator.",
+      "category": "Wind energy",
+      "origin": "Exampleland",
+      "certifications": ["IEC 61400"],
+      "min_order_quantity": 1,
+      "available_markets": ["EU"],
+      "keywords": ["wind", "turbine", "generator", "energy"],
+      "cpv_codes": ["31121320"]
+    },
+    {
+      "sku": "ENERGY-BATTERY",
+      "name": "Lithium Battery Storage",
+      "description": "Synthetic stationary lithium energy storage unit.",
+      "category": "Energy storage",
+      "origin": "Exampleland",
+      "certifications": ["IEC 62619"],
+      "min_order_quantity": 10,
+      "available_markets": ["EU"],
+      "keywords": ["lithium", "battery", "storage", "energy"],
+      "cpv_codes": ["31440000"]
+    },
+    {
+      "sku": "IT-LAPTOP",
+      "name": "Business Laptop Computer",
+      "description": "Synthetic enterprise notebook computer.",
+      "category": "Computer hardware",
+      "origin": "Exampleland",
+      "certifications": ["Energy Star"],
+      "min_order_quantity": 50,
+      "available_markets": ["EU"],
+      "keywords": ["business", "laptop", "computer", "notebook"],
+      "cpv_codes": ["30213100"]
+    },
+    {
+      "sku": "IT-SERVER",
+      "name": "Rack Server",
+      "description": "Synthetic rack-mounted enterprise server.",
+      "category": "Computer hardware",
+      "origin": "Exampleland",
+      "certifications": ["ISO 27001"],
+      "min_order_quantity": 5,
+      "available_markets": ["EU"],
+      "keywords": ["rack", "server", "computer", "enterprise"],
+      "cpv_codes": ["48820000"]
+    },
+    {
+      "sku": "IT-PRINTER",
+      "name": "Office Laser Printer",
+      "description": "Synthetic duplex network laser printer.",
+      "category": "Office equipment",
+      "origin": "Exampleland",
+      "certifications": ["CE"],
+      "min_order_quantity": 20,
+      "available_markets": ["EU"],
+      "keywords": ["office", "laser", "printer", "duplex"],
+      "cpv_codes": ["30232110"]
+    },
+    {
+      "sku": "IT-CYBER",
+      "name": "Cybersecurity Monitoring Service",
+      "description": "Synthetic managed security monitoring service.",
+      "category": "Cybersecurity services",
+      "origin": "Exampleland",
+      "certifications": ["ISO 27001"],
+      "available_markets": ["EU"],
+      "keywords": ["cybersecurity", "monitoring", "security", "managed"],
+      "cpv_codes": ["72212732"]
+    },
+    {
+      "sku": "FAC-CLEAN",
+      "name": "Hospital Cleaning Service",
+      "description": "Synthetic healthcare facility cleaning service.",
+      "category": "Cleaning services",
+      "origin": "Exampleland",
+      "certifications": ["ISO 14001"],
+      "available_markets": ["EU"],
+      "keywords": ["hospital", "cleaning", "healthcare", "facility"],
+      "cpv_codes": ["90910000"]
+    },
+    {
+      "sku": "MED-GLOVE",
+      "name": "Nitrile Medical Gloves",
+      "description": "Synthetic powder-free examination gloves.",
+      "category": "Medical consumables",
+      "origin": "Exampleland",
+      "certifications": ["CE", "ISO 13485"],
+      "min_order_quantity": 10000,
+      "available_markets": ["EU"],
+      "keywords": ["nitrile", "medical", "gloves", "examination"],
+      "cpv_codes": ["18424300"]
+    },
+    {
+      "sku": "MED-MASK",
+      "name": "Surgical Face Masks",
+      "description": "Synthetic type IIR surgical masks.",
+      "category": "Medical consumables",
+      "origin": "Exampleland",
+      "certifications": ["CE", "EN 14683"],
+      "min_order_quantity": 5000,
+      "available_markets": ["EU"],
+      "keywords": ["surgical", "face", "masks", "medical"],
+      "cpv_codes": ["33157110"]
+    },
+    {
+      "sku": "TEXT-UNIFORM",
+      "name": "Workwear Uniform Set",
+      "description": "Synthetic durable staff workwear.",
+      "category": "Protective clothing",
+      "origin": "Exampleland",
+      "certifications": ["OEKO-TEX"],
+      "min_order_quantity": 200,
+      "available_markets": ["EU"],
+      "keywords": ["workwear", "uniform", "staff", "clothing"],
+      "cpv_codes": ["18110000"]
+    },
+    {
+      "sku": "TEXT-BOOTS",
+      "name": "Safety Work Boots",
+      "description": "Synthetic protective toe work boots.",
+      "category": "Protective footwear",
+      "origin": "Exampleland",
+      "certifications": ["CE", "EN ISO 20345"],
+      "min_order_quantity": 100,
+      "available_markets": ["EU"],
+      "keywords": ["safety", "work", "boots", "protective"],
+      "cpv_codes": ["18830000"]
+    },
+    {
+      "sku": "FURN-CHAIR",
+      "name": "Ergonomic Office Chair",
+      "description": "Synthetic adjustable office seating.",
+      "category": "Office furniture",
+      "origin": "Exampleland",
+      "certifications": ["FSC"],
+      "min_order_quantity": 50,
+      "available_markets": ["EU"],
+      "keywords": ["ergonomic", "office", "chair", "furniture"],
+      "cpv_codes": ["39112000"]
+    },
+    {
+      "sku": "FURN-DESK",
+      "name": "Adjustable Office Desk",
+      "description": "Synthetic height-adjustable office desk.",
+      "category": "Office furniture",
+      "origin": "Exampleland",
+      "certifications": ["FSC"],
+      "min_order_quantity": 25,
+      "available_markets": ["EU"],
+      "keywords": ["adjustable", "office", "desk", "furniture"],
+      "cpv_codes": ["39121000"]
+    },
+    {
+      "sku": "OFFICE-PAPER",
+      "name": "Recycled Copy Paper",
+      "description": "Synthetic A4 recycled printer paper.",
+      "category": "Office supplies",
+      "origin": "Exampleland",
+      "certifications": ["FSC"],
+      "min_order_quantity": 500,
+      "available_markets": ["EU"],
+      "keywords": ["recycled", "copy", "paper", "office"],
+      "cpv_codes": ["30197643"]
+    },
+    {
+      "sku": "FOOD-COFFEE",
+      "name": "Roasted Coffee Beans",
+      "description": "Synthetic medium roast coffee beans.",
+      "category": "Beverage products",
+      "origin": "Exampleland",
+      "certifications": ["Fairtrade"],
+      "min_order_quantity": 500,
+      "available_markets": ["EU"],
+      "keywords": ["roasted", "coffee", "beans", "beverage"],
+      "cpv_codes": ["15861000"]
+    },
+    {
+      "sku": "FOOD-RICE",
+      "name": "Long Grain Rice",
+      "description": "Synthetic packaged long grain rice.",
+      "category": "Staple foods",
+      "origin": "Exampleland",
+      "certifications": ["HACCP"],
+      "min_order_quantity": 1000,
+      "available_markets": ["EU"],
+      "keywords": ["long", "grain", "rice", "food"],
+      "cpv_codes": ["03211300"]
+    },
+    {
+      "sku": "FOOD-OIL",
+      "name": "Extra Virgin Olive Oil",
+      "description": "Synthetic organic extra virgin olive oil.",
+      "category": "Edible oils",
+      "origin": "Exampleland",
+      "certifications": ["EU Organic", "HACCP"],
+      "min_order_quantity": 500,
+      "available_markets": ["EU"],
+      "keywords": ["extra", "virgin", "olive", "oil"],
+      "cpv_codes": ["15411110"]
+    },
+    {
+      "sku": "SVC-MGMT",
+      "name": "Management Consulting Service",
+      "description": "Synthetic organizational management consulting.",
+      "category": "Business consulting",
+      "origin": "Exampleland",
+      "certifications": ["ISO 9001"],
+      "available_markets": ["EU"],
+      "keywords": ["management", "consulting", "business", "organization"],
+      "cpv_codes": ["79410000"]
+    },
+    {
+      "sku": "SVC-TRANS",
+      "name": "Translation Service",
+      "description": "Synthetic multilingual document translation.",
+      "category": "Language services",
+      "origin": "Exampleland",
+      "certifications": ["ISO 17100"],
+      "available_markets": ["EU"],
+      "keywords": ["translation", "language", "documents", "multilingual"],
+      "cpv_codes": ["79530000"]
+    },
+    {
+      "sku": "TRANS-BUS",
+      "name": "Electric City Bus",
+      "description": "Synthetic battery-electric public transport bus.",
+      "category": "Public transport vehicles",
+      "origin": "Exampleland",
+      "certifications": ["CE"],
+      "min_order_quantity": 1,
+      "available_markets": ["EU"],
+      "keywords": ["electric", "city", "bus", "transport"],
+      "cpv_codes": ["34121100"]
+    },
+    {
+      "sku": "ENERGY-EVSE",
+      "name": "EV Charging Station",
+      "description": "Synthetic public electric vehicle charger.",
+      "category": "Electric vehicle infrastructure",
+      "origin": "Exampleland",
+      "certifications": ["CE", "IEC 61851"],
+      "min_order_quantity": 10,
+      "available_markets": ["EU"],
+      "keywords": ["electric", "vehicle", "charging", "station"],
+      "cpv_codes": ["31681500"]
+    }
+  ],
+  "opportunities": [
+    {
+      "tender": {
+        "id": "BENCH-001",
+        "title": "Organic dried mango supply",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Dried fruit delivery with organic mango slices.",
+        "products": ["organic dried mango"],
+        "quantity": 1000,
+        "unit": "kg",
+        "destination": "Germany",
+        "required_certifications": ["EU Organic", "HACCP"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["15897200"]
+      },
+      "relevant_skus": ["FOOD-MANGO-ORG"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-002",
+        "title": "Conventional dried mango",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Small dried fruit order for Japan.",
+        "products": ["dried mango"],
+        "quantity": 150,
+        "unit": "kg",
+        "destination": "Japan",
+        "required_certifications": ["HACCP"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["15897200"]
+      },
+      "relevant_skus": ["FOOD-MANGO-STD"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-003",
+        "title": "Dried pineapple rings",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Dried fruit pineapple procurement.",
+        "quantity": 500,
+        "unit": "kg",
+        "destination": "France",
+        "required_certifications": ["HACCP"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["15897300"]
+      },
+      "relevant_skus": ["FOOD-PINEAPPLE"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-004",
+        "title": "Seedless raisins",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Dried fruit raisins in bulk.",
+        "quantity": 600,
+        "unit": "kg",
+        "destination": "Germany",
+        "required_certifications": ["HACCP"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["15332410"]
+      },
+      "relevant_skus": ["FOOD-RAISINS"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-005",
+        "title": "Organic mixed dried fruit assortment",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Mixed dried fruit including mango, pineapple and raisins.",
+        "quantity": 1500,
+        "unit": "kg",
+        "destination": "Germany",
+        "required_certifications": ["HACCP"],
+        "source": "synthetic-benchmark"
+      },
+      "relevant_skus": ["FOOD-MIX", "FOOD-MANGO-ORG", "FOOD-PINEAPPLE", "FOOD-RAISINS"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-006",
+        "title": "Stainless industrial pumps",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Industrial pumps for a water process line.",
+        "quantity": 10,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["ISO 9001"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["42122430"]
+      },
+      "relevant_skus": ["PUMP-SS"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-007",
+        "title": "Food grade process pumps",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Sanitary industrial pumps for food processing.",
+        "quantity": 3,
+        "unit": "units",
+        "destination": "Italy",
+        "required_certifications": ["ISO 9001", "Food Contact"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["42122430"]
+      },
+      "relevant_skus": ["PUMP-FOOD"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-008",
+        "title": "Stainless control valves",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Industrial valves for flow control.",
+        "quantity": 25,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["ISO 9001"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["42131140"]
+      },
+      "relevant_skus": ["VALVE-SS"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-009",
+        "title": "Photovoltaic solar panels",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Solar equipment and photovoltaic modules.",
+        "quantity": 500,
+        "unit": "units",
+        "destination": "Spain",
+        "required_certifications": ["IEC 61215"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["09331200"]
+      },
+      "relevant_skus": ["ENERGY-SOLAR"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-010",
+        "title": "Wind turbine generators",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Wind energy generation equipment.",
+        "quantity": 2,
+        "unit": "units",
+        "destination": "Denmark",
+        "required_certifications": ["IEC 61400"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["31121320"]
+      },
+      "relevant_skus": ["ENERGY-WIND"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-011",
+        "title": "Lithium battery storage",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Stationary energy storage battery units.",
+        "quantity": 20,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["IEC 62619"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["31440000"]
+      },
+      "relevant_skus": ["ENERGY-BATTERY"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-012",
+        "title": "Business laptop computers",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Computer hardware notebooks for staff.",
+        "quantity": 100,
+        "unit": "units",
+        "destination": "France",
+        "required_certifications": ["Energy Star"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["30213100"]
+      },
+      "relevant_skus": ["IT-LAPTOP"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-013",
+        "title": "Enterprise rack servers",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Rack server computer hardware.",
+        "quantity": 10,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["ISO 27001"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["48820000"]
+      },
+      "relevant_skus": ["IT-SERVER"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-014",
+        "title": "Office laser printers",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Duplex office equipment printers.",
+        "quantity": 30,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["CE"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["30232110"]
+      },
+      "relevant_skus": ["IT-PRINTER"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-015",
+        "title": "Cybersecurity monitoring service",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Managed cybersecurity services and security monitoring.",
+        "destination": "Germany",
+        "required_certifications": ["ISO 27001"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["72212732"]
+      },
+      "relevant_skus": ["IT-CYBER"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-016",
+        "title": "Hospital cleaning services",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Healthcare facility cleaning service.",
+        "destination": "France",
+        "required_certifications": ["ISO 14001"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["90910000"]
+      },
+      "relevant_skus": ["FAC-CLEAN"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-017",
+        "title": "Nitrile medical examination gloves",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Powder-free medical consumables gloves.",
+        "quantity": 20000,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["CE", "ISO 13485"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["18424300"]
+      },
+      "relevant_skus": ["MED-GLOVE"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-018",
+        "title": "Surgical face masks",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Type IIR medical consumables masks.",
+        "quantity": 10000,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["CE", "EN 14683"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["33157110"]
+      },
+      "relevant_skus": ["MED-MASK"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-019",
+        "title": "Staff workwear uniforms",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "Protective clothing uniform sets.",
+        "quantity": 300,
+        "unit": "sets",
+        "destination": "Germany",
+        "required_certifications": ["OEKO-TEX"],
+        "source": "synthetic-benchmark",
+        "cpv_codes": ["18110000"]
+      },
+      "relevant_skus": ["TEXT-UNIFORM"]
+    },
+    {
+      "tender": {
+        "id": "BENCH-020",
+        "title": "Office furniture for mixed workplaces",
+        "buyer": "Synthetic Benchmark Buyer",
+        "description": "General office furniture for administrative rooms.",
+        "quantity": 100,
+        "unit": "units",
+        "destination": "Germany",
+        "required_certifications": ["FSC"],
+        "source": "synthetic-benchmark"
+      },
+      "relevant_skus": ["FURN-DESK"]
+    }
+  ]
+}

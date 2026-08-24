@@ -9,10 +9,21 @@ from pydantic import ValidationError
 from opentradeintel.errors import DataValidationError, ParseError
 from opentradeintel.models import Product, Tender
 
-TENDER_LIST_FIELDS = frozenset({"products", "required_certifications"})
-PRODUCT_LIST_FIELDS = frozenset({"certifications", "available_markets", "keywords"})
+TENDER_LIST_FIELDS = frozenset({"products", "required_certifications", "cpv_codes", "nuts_codes"})
+PRODUCT_LIST_FIELDS = frozenset({"certifications", "available_markets", "keywords", "cpv_codes"})
 OPTIONAL_SCALAR_FIELDS = frozenset(
-    {"quantity", "unit", "destination", "deadline", "currency", "min_order_quantity"}
+    {
+        "quantity",
+        "unit",
+        "destination",
+        "deadline",
+        "currency",
+        "min_order_quantity",
+        "source_id",
+        "source_url",
+        "estimated_value",
+        "publication_date",
+    }
 )
 
 

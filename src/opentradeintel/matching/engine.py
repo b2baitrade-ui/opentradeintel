@@ -2,7 +2,7 @@
 
 from collections.abc import Sequence
 
-from opentradeintel.matching.scorer import score_product
+from opentradeintel.matching.scorer import cpv_overlap, score_product
 from opentradeintel.models import MatchResult, Product, Tender
 
 
@@ -18,5 +18,12 @@ class DeterministicMatcher:
         if limit is not None and limit <= 0:
             raise ValueError("match limit must be positive")
         results = [score_product(tender, product) for product in products]
-        ranked = sorted(results, key=lambda result: (-result.score, result.product.sku.casefold()))
+        ranked = sorted(
+            results,
+            key=lambda result: (
+                -result.score,
+                -len(cpv_overlap(tender, result.product)),
+                result.product.sku.casefold(),
+            ),
+        )
         return ranked if limit is None else ranked[:limit]

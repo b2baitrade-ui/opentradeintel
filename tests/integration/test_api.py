@@ -49,7 +49,7 @@ def test_version_endpoint_reports_package_version() -> None:
     response = client.get("/version")
 
     assert response.status_code == 200
-    assert response.json() == {"version": "0.1.0"}
+    assert response.json() == {"version": "0.2.0"}
 
 
 def test_match_endpoint_uses_deterministic_engine() -> None:

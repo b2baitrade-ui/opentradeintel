@@ -55,6 +55,31 @@ def test_matcher_uses_casefolded_sku_as_stable_tie_breaker() -> None:
     assert [result.product.sku for result in results] == ["Alpha", "beta"]
 
 
+def test_matcher_prefers_exact_cpv_overlap_for_equal_scores() -> None:
+    matcher = DeterministicMatcher()
+    opportunity = tender().model_copy(update={"cpv_codes": ["15897200"]})
+    no_overlap = product("Alpha", "Dried mango").model_copy(update={"cpv_codes": ["15897300"]})
+    overlap = product("Zulu", "Dried mango").model_copy(update={"cpv_codes": ["15897200"]})
+
+    results = matcher.match(opportunity, [no_overlap, overlap])
+
+    assert [result.product.sku for result in results] == ["Zulu", "Alpha"]
+    assert results[0].score == results[1].score
+
+
+def test_matcher_prefers_more_exact_cpv_overlaps_before_sku() -> None:
+    matcher = DeterministicMatcher()
+    opportunity = tender().model_copy(update={"cpv_codes": ["15897200", "15897300"]})
+    one_overlap = product("Alpha", "Dried mango").model_copy(update={"cpv_codes": ["15897200"]})
+    two_overlaps = product("Zulu", "Dried mango").model_copy(
+        update={"cpv_codes": ["15897200", "15897300"]}
+    )
+
+    results = matcher.match(opportunity, [one_overlap, two_overlaps])
+
+    assert [result.product.sku for result in results] == ["Zulu", "Alpha"]
+
+
 def test_matcher_limit_returns_only_requested_count() -> None:
     products = [product("A", "Dried mango"), product("B", "Dried mango")]
 
