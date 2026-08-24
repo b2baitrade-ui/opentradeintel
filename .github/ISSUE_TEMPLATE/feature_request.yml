@@ -1,0 +1,47 @@
+name: Feature request
+description: Propose a focused improvement to OpenTradeIntel.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What sourcing or procurement workflow is difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable behavior rather than a preferred implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Ingestion or connector
+        - Parsing or normalization
+        - Matching or scoring
+        - CLI or API
+        - Documentation or developer experience
+        - Security or operations
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Explain current workarounds or simpler options.
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Project principles
+      options:
+        - label: The deterministic core can remain usable without an LLM or API key.
+          required: true
+        - label: Any example data in this request is synthetic or safely redistributable.
+          required: true

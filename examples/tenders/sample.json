@@ -1,0 +1,20 @@
+{
+  "id": "SYN-RFQ-2026-001",
+  "title": "Organic dried mango",
+  "buyer": "Demo Meridian Buyers Cooperative",
+  "description": "Synthetic request for dried fruit retail packs, including 500g formats.",
+  "products": [
+    "Dried Mango 500g",
+    "organic mango slices"
+  ],
+  "quantity": 20000,
+  "unit": "kilograms",
+  "destination": "Germany",
+  "deadline": "2026-10-15",
+  "currency": "EUR",
+  "required_certifications": [
+    "EU Organic",
+    "HACCP"
+  ],
+  "source": "synthetic-example"
+}

@@ -1,0 +1,4 @@
+sku,name,description,category,origin,certifications,min_order_quantity,available_markets,keywords
+SYN-DM-500,Dried Mango 500g,Unsweetened synthetic dried mango slices,Dried fruit,Exampleland,"EU Organic;HACCP",500,"EU;Singapore","dried;mango;organic"
+SYN-DP-250,Dried Pineapple 250g,Synthetic dried pineapple rings,Dried fruit,Sample Republic,HACCP,1000,"EU;Japan","pineapple;dried;fruit"
+SYN-IP-100,Industrial Pump 100,Synthetic stainless process pump,Industrial pumps,Fiction Isles,ISO 9001,10,"EU;United States","pump;industrial;steel"
