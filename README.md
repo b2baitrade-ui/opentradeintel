@@ -3,7 +3,9 @@
 > Open-source procurement and B2B sourcing intelligence engine.
 
 [![CI](https://github.com/b2baitrade-ui/opentradeintel/actions/workflows/ci.yml/badge.svg)](https://github.com/b2baitrade-ui/opentradeintel/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-%3E%3D3.12-3776AB)
+[![PyPI version](https://img.shields.io/pypi/v/opentradeintel)](https://pypi.org/project/opentradeintel/)
+[![Python versions](https://img.shields.io/pypi/pyversions/opentradeintel)](https://pypi.org/project/opentradeintel/)
+[![GitHub release](https://img.shields.io/github/v/release/b2baitrade-ui/opentradeintel)](https://github.com/b2baitrade-ui/opentradeintel/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 OpenTradeIntel queries real EU public procurement notices from the official TED Search API, normalizes them into typed tenders, and ranks them against a local supplier catalog. It also accepts local JSON/CSV tender data. The project is an early-stage, self-hosted toolkit for SMEs, exporters, sourcing and procurement teams, researchers, developers, and trade-intelligence projects.
@@ -25,6 +27,27 @@ Procurement requirements and catalogs often arrive in incompatible spreadsheets 
 - Dependency-free MCP adapter and optional provider protocol.
 - Synthetic examples, tests, Docker packaging, and OSS project files.
 - No API key, LLM, database, queue, or network call required by core features.
+
+## Install
+
+Install the latest release from PyPI:
+
+```bash
+pip install opentradeintel
+```
+
+Or add it to a uv-managed project:
+
+```bash
+uv add opentradeintel
+```
+
+Verify the installed CLI:
+
+```bash
+opentradeintel version
+opentradeintel --help
+```
 
 ## TED in 30 seconds
 
