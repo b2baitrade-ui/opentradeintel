@@ -26,8 +26,10 @@ For behavior changes, write one focused test, run it and confirm it fails for th
 uv run ruff check .
 uv run ruff format --check .
 uv run mypy src tests benchmarks examples
-uv run pytest
+uv run vulture src --min-confidence 90 --ignore-names cls
+uv run pytest --cov=opentradeintel --cov-report=term-missing --cov-fail-under=90
 uv run python benchmarks/run.py
+uv run pip-audit
 uv lock --check
 ```
 
@@ -38,7 +40,9 @@ make install
 make lint
 make format
 make typecheck
+make deadcode
 make test
+make audit
 make check
 ```
 

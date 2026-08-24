@@ -50,8 +50,14 @@ jobs:
           uv run ruff check .
           uv run ruff format --check .
           uv run mypy src tests benchmarks examples
-          uv run pytest
+          uv run vulture src --min-confidence 90 --ignore-names cls
+          uv run pytest --cov=opentradeintel --cov-report=term-missing --cov-fail-under=90
           uv run python benchmarks/run.py
+
+      - name: Audit runtime dependencies
+        run: |
+          uv export --frozen --no-dev --no-emit-project --output-file "${RUNNER_TEMP}/runtime-requirements.txt"
+          uv run pip-audit --requirement "${RUNNER_TEMP}/runtime-requirements.txt"
 
       - name: Build wheel and source distribution
         run: uv build

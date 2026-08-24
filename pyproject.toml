@@ -40,10 +40,13 @@ opentradeintel = "opentradeintel.cli:app"
 [dependency-groups]
 dev = [
   "mypy>=1.17,<3",
+  "pip-audit>=2.10.1,<3",
   "pre-commit>=4.2,<5",
   "pytest>=8.4,<10",
+  "pytest-cov>=7.1,<8",
   "ruff>=0.12,<1",
   "twine>=6.2,<8",
+  "vulture>=2.16,<3",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -72,3 +75,12 @@ python_version = "3.12"
 strict = true
 packages = ["opentradeintel"]
 mypy_path = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["opentradeintel"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = true

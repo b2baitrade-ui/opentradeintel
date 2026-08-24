@@ -32,11 +32,13 @@ Do not commit real procurement records, supplier details, credentials, `.env` fi
 uv run ruff check .
 uv run ruff format --check .
 uv run mypy src tests benchmarks examples
-uv run pytest
+uv run vulture src --min-confidence 90 --ignore-names cls
+uv run pytest --cov=opentradeintel --cov-report=term-missing --cov-fail-under=90
 uv run python benchmarks/run.py
+uv run pip-audit
 ```
 
-`make check` runs the same commands on systems with GNU Make. Run `uv lock --check` after dependency changes. Docker-related changes should also pass `docker compose config` and `docker compose build`.
+`make check` runs the same commands on systems with GNU Make. Run `uv lock --check` after dependency changes. CI builds the production image and waits for its health check; Docker-related changes should also pass `docker compose config` and `docker compose build` locally.
 
 ## Add a public procurement connector
 
