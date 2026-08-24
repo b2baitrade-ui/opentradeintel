@@ -52,8 +52,42 @@ jobs:
       - name: Type check
         run: uv run mypy src tests benchmarks examples
 
+      - name: Detect dead code
+        run: uv run vulture src --min-confidence 90 --ignore-names cls
+
       - name: Test
-        run: uv run pytest
+        run: uv run pytest --cov=opentradeintel --cov-report=term-missing --cov-fail-under=90
 
       - name: Benchmark
         run: uv run python benchmarks/run.py
+
+  container:
+    name: Container smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Build container
+        run: docker build --tag opentradeintel:ci .
+
+      - name: Verify container health
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --detach --name opentradeintel-ci opentradeintel:ci
+          trap 'docker logs opentradeintel-ci; docker rm --force opentradeintel-ci' EXIT
+          for _ in {1..15}; do
+            status="$(docker inspect --format '{{.State.Health.Status}}' opentradeintel-ci)"
+            if [ "${status}" = "healthy" ]; then
+              exit 0
+            fi
+            if [ "${status}" = "unhealthy" ]; then
+              exit 1
+            fi
+            sleep 2
+          done
+          echo "Container did not become healthy within 30 seconds" >&2
+          exit 1
