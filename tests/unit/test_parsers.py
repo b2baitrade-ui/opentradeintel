@@ -98,6 +98,22 @@ def test_load_tender_accepts_csv_and_splits_lists(tmp_path: Path) -> None:
     assert tender.required_certifications == ["EU Organic", "HACCP"]
 
 
+def test_load_tender_csv_splits_cpv_and_nuts_codes(tmp_path: Path) -> None:
+    path = tmp_path / "tender.csv"
+    path.write_text(
+        "id,title,buyer,description,products,required_certifications,source,cpv_codes,"
+        "nuts_codes\n"
+        "rfq-001,Organic mango,Synthetic Buyers,Bulk order,mango,,synthetic-demo,"
+        '"15897200-6;15897200","deu;DE123"\n',
+        encoding="utf-8",
+    )
+
+    tender = load_tender(path)
+
+    assert tender.cpv_codes == ["15897200"]
+    assert tender.nuts_codes == ["DEU", "DE123"]
+
+
 def test_load_catalog_accepts_json_array_and_wrapper(tmp_path: Path) -> None:
     array_path = write_json(tmp_path / "array.json", [product_record()])
     wrapped_path = write_json(tmp_path / "wrapped.json", {"products": [product_record()]})
@@ -128,6 +144,21 @@ def test_load_catalog_csv_splits_list_columns_and_parses_empty_moq(tmp_path: Pat
     assert product.available_markets == ["EU", "Singapore"]
     assert product.keywords == ["mango", "organic"]
     assert product.min_order_quantity is None
+
+
+def test_load_catalog_csv_splits_cpv_codes(tmp_path: Path) -> None:
+    path = tmp_path / "catalog.csv"
+    path.write_text(
+        "sku,name,description,category,origin,certifications,min_order_quantity,"
+        "available_markets,keywords,cpv_codes\n"
+        "DM-500,Dried Mango,Dried slices,Dried fruit,Exampleland,,,EU,mango,"
+        '"15897200-6;15897200"\n',
+        encoding="utf-8",
+    )
+
+    product = load_catalog(path)[0]
+
+    assert product.cpv_codes == ["15897200"]
 
 
 def test_loader_treats_file_suffix_case_insensitively(tmp_path: Path) -> None:

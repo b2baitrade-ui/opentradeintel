@@ -18,6 +18,11 @@ def _tender_tokens(tender: Tender) -> set[str]:
     return set(normalize_text(combined).split())
 
 
+def cpv_overlap(tender: Tender, product: Product) -> tuple[str, ...]:
+    """Return exact CPV codes shared by both records in stable order."""
+    return tuple(sorted(set(tender.cpv_codes) & set(product.cpv_codes)))
+
+
 def _product_similarity(tender: Tender, product: Product) -> tuple[int, str]:
     tender_tokens = _tender_tokens(tender)
     name_tokens = set(normalize_text(product.name).split())
@@ -102,16 +107,22 @@ def score_product(tender: Tender, product: Product) -> MatchResult:
         for warning in (category_warning, certification_warning, market_warning, moq_warning)
         if warning is not None
     ]
+    reasons = [
+        similarity_reason,
+        category_reason,
+        certification_reason,
+        market_reason,
+        moq_reason,
+    ]
+    overlapping_cpv = cpv_overlap(tender, product)
+    if overlapping_cpv:
+        reasons.append(
+            f"CPV overlap: {', '.join(overlapping_cpv)} (tie-break signal; no score impact)"
+        )
     return MatchResult(
         score=breakdown.total,
         product=product,
-        reasons=[
-            similarity_reason,
-            category_reason,
-            certification_reason,
-            market_reason,
-            moq_reason,
-        ],
+        reasons=reasons,
         warnings=warnings,
         breakdown=breakdown,
     )

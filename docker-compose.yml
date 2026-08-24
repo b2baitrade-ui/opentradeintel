@@ -2,7 +2,7 @@ services:
   api:
     build:
       context: .
-    image: opentradeintel:0.1.0
+    image: opentradeintel:0.2.0
     ports:
       - "8000:8000"
     read_only: true

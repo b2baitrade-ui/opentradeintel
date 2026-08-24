@@ -1,0 +1,38 @@
+{
+  "notices": [
+    {
+      "publication-number": "176184-2026",
+      "notice-title": {
+        "eng": "Italy – Management-related services – Management and control services",
+        "ita": "Italia – Servizi connessi alla gestione – Servizi di gestione e controllo"
+      },
+      "buyer-name": {
+        "ita": ["Giunta Regionale"]
+      },
+      "description-proc": {
+        "ita": "Procedura aperta per servizi di gestione e controllo."
+      },
+      "description-lot": {
+        "ita": ["Servizi di gestione e controllo dell'intervento."]
+      },
+      "classification-cpv": ["79420000", "79420000"],
+      "main-classification-proc": ["79420000"],
+      "place-of-performance": ["ITI43", "ITA", "ITI43"],
+      "publication-date": "2026-03-13+01:00",
+      "estimated-value-proc": "6500000.00",
+      "estimated-value-cur-proc": "EUR",
+      "links": {
+        "xml": {
+          "MUL": "https://ted.europa.eu/en/notice/176184-2026/xml"
+        },
+        "html": {
+          "ENG": "https://ted.europa.eu/en/notice/-/detail/176184-2026",
+          "ITA": "https://ted.europa.eu/it/notice/-/detail/176184-2026"
+        }
+      }
+    }
+  ],
+  "totalNoticeCount": 1,
+  "iterationNextToken": null,
+  "timedOut": false
+}

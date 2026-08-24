@@ -25,8 +25,9 @@ For behavior changes, write one focused test, run it and confirm it fails for th
 ```bash
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy src tests
+uv run mypy src tests benchmarks examples
 uv run pytest
+uv run python benchmarks/run.py
 uv lock --check
 ```
 
@@ -46,7 +47,15 @@ make check
 ```bash
 uv run opentradeintel --help
 uv run opentradeintel match --tender examples/tenders/sample.json --catalog examples/catalogs/sample.csv
+uv run opentradeintel ted search --query "dried fruit" --limit 1
+uv run opentradeintel ted match --query "dried fruit" --catalog examples/catalogs/sample.csv
 uv run uvicorn opentradeintel.api.app:app --reload
+```
+
+Default pytest runs exclude the external `live` marker. To run the one bounded public TED smoke test explicitly:
+
+```bash
+uv run pytest -m live tests/live
 ```
 
 ## Docker verification
@@ -65,6 +74,8 @@ docker compose down
 2. Run every local quality gate and secret scan.
 3. Commit and push without force.
 4. Wait for the actual GitHub CI run to succeed.
-5. Create the version tag and GitHub release only from the verified commit.
+5. Confirm the PyPI `pypi` environment and pending Trusted Publisher are configured as documented in `docs/distribution.md`.
+6. Create the version tag and GitHub release only from the verified commit.
+7. Let the release workflow build and publish through OIDC; never add a long-lived PyPI token.
 
 See `CONTRIBUTING.md` for branch, parser, connector, privacy, and pull-request guidance.

@@ -39,8 +39,8 @@ def valid_product_data() -> dict[str, object]:
     }
 
 
-def test_package_version_is_v0_1_0() -> None:
-    assert __version__ == "0.1.0"
+def test_package_version_is_v0_2_0() -> None:
+    assert __version__ == "0.2.0"
 
 
 def test_tender_parses_typed_values_and_trims_strings() -> None:
@@ -58,6 +58,62 @@ def test_tender_uppercases_currency() -> None:
     tender = Tender.model_validate(valid_tender_data())
 
     assert tender.currency == "EUR"
+
+
+def test_tender_accepts_generic_source_metadata_and_normalizes_codes() -> None:
+    data = valid_tender_data()
+    data.update(
+        source_id="176184-2026",
+        source_url="https://ted.europa.eu/en/notice/-/detail/176184-2026",
+        cpv_codes=[" 79420000 ", "79420000-6", "79420000"],
+        nuts_codes=[" iti43 ", "ITA", "ITI43"],
+        estimated_value="6500000.00",
+        publication_date="2026-03-13",
+    )
+
+    tender = Tender.model_validate(data)
+
+    assert tender.source_id == "176184-2026"
+    assert tender.cpv_codes == ["79420000"]
+    assert tender.nuts_codes == ["ITI43", "ITA"]
+    assert tender.estimated_value == Decimal("6500000.00")
+    assert tender.publication_date == date(2026, 3, 13)
+
+
+def test_tender_source_metadata_is_optional_for_existing_inputs() -> None:
+    tender = Tender.model_validate(valid_tender_data())
+
+    assert tender.source_id is None
+    assert tender.source_url is None
+    assert tender.cpv_codes == []
+    assert tender.nuts_codes == []
+    assert tender.estimated_value is None
+    assert tender.publication_date is None
+
+
+def test_tender_accepts_zero_estimated_value() -> None:
+    data = valid_tender_data()
+    data["estimated_value"] = 0
+
+    tender = Tender.model_validate(data)
+
+    assert tender.estimated_value == Decimal("0")
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("estimated_value", -1),
+        ("cpv_codes", ["invalid"]),
+        ("nuts_codes", ["!"]),
+    ],
+)
+def test_tender_rejects_invalid_source_metadata(field: str, value: object) -> None:
+    data = valid_tender_data()
+    data[field] = value
+
+    with pytest.raises(ValidationError):
+        Tender.model_validate(data)
 
 
 @pytest.mark.parametrize("currency", ["EU", "EURO", "12A"])
@@ -93,6 +149,23 @@ def test_product_parses_moq_and_trims_name() -> None:
 
     assert product.name == "Dried Mango 500g"
     assert product.min_order_quantity == Decimal("500")
+
+
+def test_product_accepts_optional_normalized_cpv_codes() -> None:
+    data = valid_product_data()
+    data["cpv_codes"] = ["15897200-6", " 15897200 "]
+
+    product = Product.model_validate(data)
+
+    assert product.cpv_codes == ["15897200"]
+
+
+def test_product_rejects_invalid_cpv_code() -> None:
+    data = valid_product_data()
+    data["cpv_codes"] = ["invalid"]
+
+    with pytest.raises(ValidationError):
+        Product.model_validate(data)
 
 
 def test_product_rejects_blank_sku() -> None:

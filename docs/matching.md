@@ -36,7 +36,9 @@ When both quantities exist, a tender quantity at or above the product MOQ receiv
 
 ## Ordering and interpretation
 
-Results sort by descending total score, then case-insensitive SKU for deterministic ties. A high score is evidence of structured-field compatibility—not a supplier qualification, legal conclusion, price comparison, sanctions check, product-quality decision, or award recommendation. Operators should review warnings and verify commercial units, certifications, market rights, and current supplier capacity.
+Results sort by descending total score. If both records provide CPV metadata, more exact CPV overlaps rank first among equal scores; the overlap is shown as a score-neutral explanation. Case-insensitive SKU remains the final deterministic tie-breaker. CPV prefixes and taxonomy relationships are not inferred.
+
+A high score is evidence of structured-field compatibility—not a supplier qualification, legal conclusion, price comparison, sanctions check, product-quality decision, or award recommendation. Operators should review warnings and verify commercial units, certifications, market rights, and current supplier capacity.
 
 ## Evolving the matcher
 

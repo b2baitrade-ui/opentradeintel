@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/python-%3E%3D3.12-3776AB)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-OpenTradeIntel turns fragmented tender/RFQ datasets and supplier catalogs into structured, ranked business opportunities. It is an early-stage, self-hosted toolkit for SMEs, exporters, sourcing and procurement teams, researchers, developers, and trade-intelligence projects.
+OpenTradeIntel queries real EU public procurement notices from the official TED Search API, normalizes them into typed tenders, and ranks them against a local supplier catalog. It also accepts local JSON/CSV tender data. The project is an early-stage, self-hosted toolkit for SMEs, exporters, sourcing and procurement teams, researchers, developers, and trade-intelligence projects.
 
 ## Why?
 
@@ -16,12 +16,49 @@ Procurement requirements and catalogs often arrive in incompatible spreadsheets 
 
 - Typed tender/RFQ and product models using Pydantic.
 - JSON and CSV ingestion behind extensible connector/parser interfaces.
+- Official public TED v3 Search API connector with no API key or scraper.
+- TED keyword, CPV, country, page-number, and iteration-token search support.
+- Direct `TED -> normalized tender -> local catalog -> ranked matches` workflow.
 - Local text, unit, category, keyword, and market normalization.
 - Deterministic 0–100 matching with a complete component breakdown.
 - Typer CLI and FastAPI API backed by the same application service.
 - Dependency-free MCP adapter and optional provider protocol.
 - Synthetic examples, tests, Docker packaging, and OSS project files.
 - No API key, LLM, database, queue, or network call required by core features.
+
+## TED in 30 seconds
+
+Search active public notices through the official TED API:
+
+```bash
+uv run opentradeintel ted search \
+  --query "dried fruit" \
+  --limit 10 \
+  --output json
+```
+
+Search by CPV/place and save normalized tenders:
+
+```bash
+uv run opentradeintel ted search \
+  --cpv 15897200 \
+  --country DE \
+  --limit 20 \
+  --output-file tenders.json
+```
+
+Match the returned notices directly against a local catalog:
+
+```bash
+uv run opentradeintel ted match \
+  --query "dried fruit" \
+  --catalog examples/catalogs/sample.csv \
+  --match-limit 3
+```
+
+`ted match` returns at most 10 catalog matches per notice by default; use `--match-limit` to choose a different positive bound.
+
+TED search requires outbound HTTPS access but no credential. Local file matching and the deterministic core remain fully offline.
 
 ## Quick start
 
@@ -62,7 +99,7 @@ Example excerpt (values are computed, not hard-coded):
    [+] MOQ compatibility: 10/10
 ```
 
-All included examples are synthetic and provided for demonstration purposes only.
+Supplier, tender, and benchmark examples are synthetic. `examples/ted/` is a clearly attributed, trimmed snapshot of public TED procurement data.
 
 ## API
 
@@ -113,13 +150,14 @@ The score is the integer sum of five deterministic components:
 | Market | 15 | Destination and available-market aliases intersect |
 | MOQ | 10 | Tender quantity meets product minimum order quantity |
 
-Missing quantity or MOQ receives five neutral points and a warning. Results include reasons, warnings, and the component breakdown. Ties are sorted by SKU, so identical inputs always produce identical output. See [matching documentation](docs/matching.md).
+Missing quantity or MOQ receives five neutral points and a warning. Results include reasons, warnings, and the component breakdown. Exact CPV overlap is a score-neutral tie-break signal; SKU is the final stable tie-breaker. See [matching documentation](docs/matching.md) and the [20-opportunity benchmark](docs/benchmark.md).
 
 ## Architecture
 
 ```text
-source -> connector -> JSON/CSV parser -> typed models -> normalization
-       -> deterministic matcher -> OpportunityService -> CLI / FastAPI / MCP adapter
+local JSON/CSV -> connector -> parser -------\
+                                             -> typed Tender -> OpportunityService -> matcher
+official TED -> search client -> TED mapper -/                              -> CLI / FastAPI / MCP adapter
 ```
 
 The boundaries are intentionally small. New source connectors acquire text; parsers interpret formats; interfaces never reimplement matching. See [architecture](docs/architecture.md) and [connector guidance](docs/connectors.md).
@@ -130,7 +168,7 @@ OpenTradeIntel does not require procurement or supplier data to be sent to an ex
 
 ## AI providers and MCP
 
-AI is optional. The `EnrichmentProvider` protocol is a future extension point; no provider is installed or called by core. `.env.example` contains a blank optional key only to document that future integration. Version 0.1 also ships a dependency-free `OpenTradeIntelMCPAdapter`; registering it with a concrete MCP SDK is deferred to v0.2.
+AI is optional. The `EnrichmentProvider` protocol is a future extension point; no provider is installed or called by core. `.env.example` contains a blank optional key only to document that future integration. The dependency-free `OpenTradeIntelMCPAdapter` remains an interface only; registering it with a concrete MCP SDK is deferred.
 
 ## Docker
 
@@ -147,15 +185,16 @@ The runtime image uses Python 3.12, runs as a non-root user, and exposes port `8
 uv sync --all-groups --locked
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy src tests
+uv run mypy src tests benchmarks examples
 uv run pytest
+uv run python benchmarks/run.py
 ```
 
 On systems with GNU Make, `make check` runs the same gates. See [development documentation](docs/development.md).
 
 ## Roadmap
 
-Version 0.1 focuses on a dependable local baseline. PDF/XLSX parsing, plugin connectors, semantic matching, and a concrete MCP server are candidates for v0.2. See the honest, non-binding [roadmap](ROADMAP.md).
+Version 0.2 adds the official TED public connector and a measurable matcher baseline. PDF/XLSX parsing, additional reviewed public connectors, evaluated semantic methods, and a concrete MCP server remain future candidates. See the honest, non-binding [roadmap](ROADMAP.md).
 
 ## Contributing
 

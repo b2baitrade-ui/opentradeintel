@@ -4,7 +4,18 @@ OpenTradeIntel separates **acquisition** from **interpretation**.
 
 ## Connector contract
 
-`SourceConnector.read_text(path: Path) -> str` returns text and raises an OpenTradeIntel domain error when acquisition fails. Version 0.1 includes `LocalFileConnector`, which reads UTF-8 (including a UTF-8 BOM). Future HTTP, object-storage, or portal connectors should keep credentials outside source code and document rate limits and source terms.
+`SourceConnector.read_text(path: Path) -> str` returns text and raises an OpenTradeIntel domain error when acquisition fails. `LocalFileConnector` reads UTF-8 (including a UTF-8 BOM).
+
+Search APIs use a capability-specific client when a path-to-text contract would hide important semantics. The official TED integration is split into:
+
+- `TEDSearchQuery`: validates filters and renders an expert query;
+- `TEDSearchClient`: owns HTTP, response-envelope validation, and pagination;
+- `TEDNoticeMapper`: maps raw field projections to `Tender` without network access;
+- `TEDOpportunityService`: composes search/mapping with the existing matcher.
+
+This split is the connector contract: acquisition returns validated raw source data, mapping creates generic typed models, and an application service composes existing business logic. See [official TED source notes](sources/ted.md).
+
+`TEDSearchClient` streams each response and enforces a 16 MiB decoded-body ceiling by default. It rejects an oversized declared `Content-Length` before reading and also stops if streamed bytes cross the ceiling. Integrators can set a smaller positive `max_response_bytes` value when constructing the client.
 
 ## Parser contracts
 
@@ -38,4 +49,14 @@ Both tenders and catalogs are accepted as JSON or CSV. Tender CSV files must con
 4. Register the suffix in `parsers/loader.py` only after the tests pass.
 5. Document encoding, list conventions, and lossy transformations.
 
-HTML, RSS, PDF, XLSX, APIs, and public procurement portals are extension candidates, not partially implemented placeholders in v0.1.
+## Public API checklist
+
+1. Use an official documented API when available.
+2. Configure base URL, timeout, and an identifying user-agent.
+3. Validate request inputs and response envelopes explicitly.
+4. Keep retries absent or small, visible, bounded, and justified.
+5. Exercise success, empty, malformed, timeout, network, pagination, and mapping behavior offline.
+6. Preserve source identifiers and URLs with optional generic model fields.
+7. Attribute any redistributable public fixture and keep supplier examples synthetic.
+
+HTML scraping, RSS, PDF, and XLSX remain unsupported unless a complete, tested connector/parser is contributed.

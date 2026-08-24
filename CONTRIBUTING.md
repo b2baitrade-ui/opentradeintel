@@ -31,15 +31,28 @@ Do not commit real procurement records, supplier details, credentials, `.env` fi
 ```bash
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy src tests
+uv run mypy src tests benchmarks examples
 uv run pytest
+uv run python benchmarks/run.py
 ```
 
 `make check` runs the same commands on systems with GNU Make. Run `uv lock --check` after dependency changes. Docker-related changes should also pass `docker compose config` and `docker compose build`.
 
-## Adding a connector
+## Add a public procurement connector
 
-Connectors acquire raw content and must implement `SourceConnector.read_text(Path) -> str`. Keep authentication and network behavior out of parser code. Document required permissions, rate limits, retry behavior, and source terms. Never add embedded credentials or silently upload source content.
+The smallest useful contribution path is one official, public, documented source:
+
+1. Link the source owner's API documentation and terms in `docs/sources/`.
+2. Keep HTTP acquisition, raw response validation, mapping, and application composition separate.
+3. Map into the generic `Tender`; add only optional, source-neutral fields when the current model is insufficient.
+4. Inject the HTTP client/transport and test every default path with complete offline fixtures.
+5. Make any live test optional with `@pytest.mark.live`; CI must not depend on the source being online.
+6. Document authentication, permissions, limits, pagination, timeout, and retry behavior. Do not add hidden retries.
+7. Add CLI/API adapters only through a shared application service.
+
+Local text sources implement `SourceConnector.read_text(Path) -> str`. Public APIs may use a capability-specific search client, as TED does, but must preserve the same acquisition -> mapping -> typed model boundary. See `examples/connectors/minimal.py` and `docs/connectors.md`.
+
+Never use scraping when an official API provides the required data. Never add embedded credentials or silently upload source content.
 
 ## Adding a parser
 
